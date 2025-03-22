@@ -54,7 +54,7 @@ class MyPlugin(Star):
                             if self._last_personastate == 0 and personastate == 1:
                                 from astrbot.api.event import MessageChain
                                 message_chain = MessageChain("对方已上线")
-                                await self.context.send_message("gewechat:FriendMessage:wxid_vpmipmmgc3vm22", message_chain)
+                                self.context.send_message("gewechat:FriendMessage:wxid_vpmipmmgc3vm22", message_chain)
 
                         # 检测 gameextrainfo 变化
                         if self._last_gameextrainfo is not None:
@@ -62,11 +62,12 @@ class MyPlugin(Star):
                                 if gameextrainfo:
                                     from astrbot.api.event import MessageChain
                                     message_chain = MessageChain("对方已上线")
-                                    await self.context.send_message("gewechat:FriendMessage:wxid_vpmipmmgc3vm22", message_chain)
+                                    self.context.send_message("gewechat:FriendMessage:wxid_vpmipmmgc3vm22", message_chain)
                                 else:
                                     from astrbot.api.event import MessageChain
                                     message_chain = MessageChain("对方已上线")
-                                    await self.context.send_message("gewechat:FriendMessage:wxid_vpmipmmgc3vm22", message_chain)
+                                    self.context.send_message("gewechat:FriendMessage:wxid_vpmipmmgc3vm22", message_chain)
+                                    1111
 
                         # 更新状态
                         self._last_personastate = personastate
@@ -84,6 +85,8 @@ class MyPlugin(Star):
         if not self._running:
             self.start_thread()
             yield event.plain_result("Steam 状态监控已启动！")
+            self.context.send_message("gewechat:FriendMessage:wxid_vpmipmmgc3vm22", "sb")
+            self.context.send_message("wxid_vpmipmmgc3vm22", "sb1")
         else:
             yield event.plain_result("Steam 状态监控已经在运行中！")
 
